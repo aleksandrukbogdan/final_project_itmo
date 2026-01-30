@@ -24,7 +24,11 @@ INSTRUCTIONS:
 2. If "Known Facts" is empty or says "No relevant facts found", USE YOUR OWN INTERNAL KNOWLEDGE to verify the claim.
 3. If the claim is subjective (e.g. "I am experienced"), mark as OPINION.
 
-IMPORTANT: Your internal reasoning and output must be in **ENGLISH**.
+IMPORTANT: 
+- Your internal reasoning and output must be in **ENGLISH**.
+- You must output VALID JSON.
+- If you include text with double quotes, YOU MUST ESCAPE THEM (e.g. \"quote\").
+- Ensure all newlines in string values are escaped (\\n).
 """
 
 PSYCHOLOGIST_PROMPT = """You are an expert Interview Psychologist.
@@ -35,8 +39,10 @@ Look for:
 - Stress markers (defensiveness, evasion)
 - honesty indicators
 
-IMPORTANT: Your internal reasoning and output must be in **ENGLISH**.
-Output a brief profile of the candidate's current state.
+IMPORTANT: 
+- Your internal reasoning and output must be in **ENGLISH**.
+- Output a brief profile of the candidate's current state.
+- Ensure valid JSON output. Escape double quotes within strings (e.g. \"quote\").
 """
 
 MENTOR_PROMPT = """You are the Lead Mentor and Strategist of the interview.
@@ -54,7 +60,9 @@ Your responsibilities:
 CRITICAL RULE:
 - If the candidate explicitly asks to STOP (e.g., "Stop game", "Стоп игра", "Enough"), your instruction MUST be to politely ACCEPT the stop and END the interview immediately. Do not try to encourage or continue.
 
-IMPORTANT: Your internal reasoning and output must be in **ENGLISH**.
+IMPORTANT: 
+- Your internal reasoning and output must be in **ENGLISH**.
+- Ensure valid JSON output. Escape double quotes within strings (e.g. \"quote\").
 """
 
 INTERVIEWER_PROMPT = """You are a Technical Interviewer.
@@ -79,6 +87,7 @@ Calculate a weighted score (Max 100):
 IMPORTANT: 
 - Your internal reasoning and output must be in **ENGLISH**.
 - DO NOT sum the percentages. Sum the POINTS.
+- Ensure valid JSON output. Escape double quotes within strings (e.g. \"quote\").
 """
 
 JUDGE_PROMPT = """You are an AI Quality Assurance Judge.
@@ -91,6 +100,7 @@ Check for:
 
 If the response is Acceptable, return approved=True.
 If the response needs critical improvement, return approved=False and provide feedback.
+IMPORTANT: Ensure valid JSON output. Escape double quotes within strings (e.g. \"quote\").
 """
 
 SUMMARIZER_PROMPT = """You are a Conversation Summarizer.
@@ -105,4 +115,6 @@ Retain:
 Discard:
 - Politeness fillers ("Hello", "Thank you").
 - Repetitive phrasings.
+
+IMPORTANT: Ensure valid JSON output. Escape double quotes within strings (e.g. \"quote\").
 """

@@ -81,9 +81,9 @@ def main():
         
         # Логирование
         # Очищаем отчеты от переносов строк для красивого лога
-        fc_clean = fact_report.replace('\n', ' ').strip()
-        psych_clean = psych_report.replace('\n', ' ').strip()
-        mentor_clean = instruction.replace('\n', ' ').strip()
+        fc_clean = str(fact_report).replace('\n', ' ').strip()
+        psych_clean = str(psych_report).replace('\n', ' ').strip()
+        mentor_clean = str(instruction).replace('\n', ' ').strip()
         
         combined_thoughts = f"[Fact-Checker] {fc_clean} | [Psychologist] {psych_clean} | [Mentor] {mentor_clean}"
         logger.log_turn(user_input, combined_thoughts, response)

@@ -90,6 +90,11 @@ def main():
         
         print(f"\n[Interviewer]: {response}")
 
+        # Check for Mentor's termination signal
+        if instruction.interview_status == "TERMINATE":
+             print("\n--- Interview Concluded by Mentor ---")
+             break
+
     # 4. Финальное решение
     dm_ctx = {"full_log": full_log_text}
     final_decision = decision_maker.run(dm_ctx)

@@ -32,8 +32,13 @@ class InterviewLogger:
         self.session_data["turns"].append(turn_entry)
         self._save()
 
-    def log_feedback(self, feedback: str):
-        self.session_data["final_feedback"] = feedback
+    def log_feedback(self, feedback: Any):
+        if hasattr(feedback, "model_dump"):
+            self.session_data["final_feedback"] = feedback.model_dump()
+        elif hasattr(feedback, "dict"):
+            self.session_data["final_feedback"] = feedback.dict()
+        else:
+            self.session_data["final_feedback"] = str(feedback)
         self._save()
 
     def _save(self):

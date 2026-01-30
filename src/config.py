@@ -63,6 +63,7 @@ CRITICAL RULE:
 IMPORTANT: 
 - Your internal reasoning and output must be in **ENGLISH**.
 - Ensure valid JSON output. Escape double quotes within strings (e.g. \"quote\").
+- Set "interview_status" to "TERMINATE" ONLY if the interview should end (either successfully completed or user requested stop). Otherwise "CONTINUE".
 """
 
 INTERVIEWER_PROMPT = """You are a Technical Interviewer.

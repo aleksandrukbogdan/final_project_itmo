@@ -28,6 +28,9 @@ class MentorStrategy(BaseModel):
     tone: Literal["Friendly", "Strict", "Encouraging", "Neutral", "Empathetic and Calm"] = Field(
         ..., description="The tone the Interviewer should adopt."
     )
+    interview_status: Literal["CONTINUE", "TERMINATE"] = Field(
+        default="CONTINUE", description="Set to TERMINATE if the candidate asks to stop or the interview is finished."
+    )
 
 # --- Interviewer ---
 # Interviewer output is usually just the text response, but we can wrap it if needed.
